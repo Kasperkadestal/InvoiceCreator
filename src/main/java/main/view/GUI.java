@@ -180,7 +180,7 @@ public class GUI extends JPanel {
         addGolf.setFocusable(false);
         addGolf.addActionListener(l->addToList(false));
         golfName = new JTextField (5);
-        golfName.setFocusable(false);
+        //golfName.setFocusable(false);
         golfLbl = new JLabel ("Golfbana:");
         golfLbl.setFocusable(false);
         golfTimeLbl = new JLabel ("Tid:");
@@ -363,6 +363,7 @@ public class GUI extends JPanel {
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add (new GUI());
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible (true);
     }
 

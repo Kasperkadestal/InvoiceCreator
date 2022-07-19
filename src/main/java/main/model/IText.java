@@ -6,6 +6,7 @@ import com.itextpdf.text.pdf.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 public class IText {
     private Unicode unicode;
@@ -16,7 +17,7 @@ public class IText {
     public void createPDF(List info,List times) throws DocumentException, IOException {
         String title = "Offert | " + info.get(0).toString();
         PdfReader reader = new PdfReader("pdf/Offert_HWG_Golf.pdf");
-        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream("pdf/Offert_HWG_Golf_Modified.pdf"));
+        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream("pdf/Offert_HWG_Golf_" + info.get(0).toString() + ".pdf"));
 
         // get object for writing over the existing content;
         // you can also use getUnderContent for writing in the bottom layer
@@ -51,10 +52,6 @@ public class IText {
             over.showText(info.get(i+1).toString().replaceAll("å", "\u00E5").replaceAll("Å", "\u212B").replaceAll("ä", "\u00E4").replaceAll("Ä", "\u00C4").replaceAll("ö", "\u00F6").replaceAll("Ö", "\u00D6"));
         }
 
-        over.setRGBColorFill(255, 0, 0);
-        over.setFontAndSize(BaseFont.createFont("fonts/Futura Heavy font.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED), 16);
-        over.showTextAligned(PdfContentByte.ALIGN_CENTER,info.get(12).toString() + ":-",438,120,0);
-
         System.out.println(times.size());
         if (!times.isEmpty()) {
             int b = 0;
@@ -73,6 +70,10 @@ public class IText {
                 }
             }
         }
+
+        over.setRGBColorFill(255, 0, 0);
+        over.setFontAndSize(BaseFont.createFont("fonts/Futura Heavy font.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED), 20);
+        over.showTextAligned(PdfContentByte.ALIGN_CENTER,info.get(12).toString() + ":-",438,120,0);
         over.endText();
 
         stamper.close();
