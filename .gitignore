@@ -46,3 +46,8 @@ build/tmp/compileJava/previous-compilation-data.bin
 .gradle/7.4/executionHistory/executionHistory.bin
 .gradle/7.4/dependencies-accessors/dependencies-accessors.lock
 .gradle/7.4/checksums/checksums.lock
+
+# Generated local files (restore dependencies/build outputs locally)
+/.gradle/
+/build/
+/out/
